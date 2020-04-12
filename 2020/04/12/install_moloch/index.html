@@ -10,14 +10,14 @@
 <h3 id="動作に必要な物"><a href="#動作に必要な物" class="headerlink" title="動作に必要な物"></a>動作に必要な物</h3><ul>
 <li><p>Java<br>  次項のElasticsearchに必須らしい</p>
 </li>
-<li><p>Elasticsearch 7.6.2<br>  今回はNICの通信をコイツが収集しデータベース化してくれる<br><br>  <em><a href="https://qiita.com/halhosono/items/6aa0bdf9a4ad34434061" target="_blank" rel="noopener">halhosonoさんのQiita参考サイト</a></em></p>
+<li><p>Elasticsearch 7.6.2<br>  今回はNICの通信をコイツが収集しデータベース化してくれる<br>  <em><a href="https://qiita.com/halhosono/items/6aa0bdf9a4ad34434061" target="_blank" rel="noopener">halhosonoさんのQiita参考サイト</a></em></p>
 </li>
-<li><p>Moloch 2.2.3<br>  前項のElsticsearchが収集したデータを分析や可視化する為のツール<br><br>  <em><a href="https://molo.ch/#download" target="_blank" rel="noopener">Moloch Download</a></em></p>
+<li><p>Moloch 2.2.3<br>  前項のElsticsearchが収集したデータを分析や可視化する為のツール<br>  <em><a href="https://molo.ch/#download" target="_blank" rel="noopener">Moloch Download</a></em></p>
 </li>
 </ul>
-<h3 id="導入方法"><a href="#導入方法" class="headerlink" title="導入方法"></a>導入方法</h3><p>(前提要件)<br>既にUbuntu上で監視対象となるNIC(この場合ens160)が有効になっている必要があります。<br>sudo lshw -C network<br>と入力し監視対象のnicが*-network:X DISABLEDになっている場合は<br>sudo ifconfig ensXXX(有効化対象) up<br>と打つと有効化できそうです。<br><a href="https://ubuntuforums.org/showthread.php?t=1400504" target="_blank" rel="noopener">https://ubuntuforums.org/showthread.php?t=1400504</a><br>・Javaのインストール</p>
+<h3 id="導入方法"><a href="#導入方法" class="headerlink" title="導入方法"></a>導入方法</h3><p>前提要件として既にUbuntu上で監視対象となるNIC(この場合ens160)が有効になっている必要があります。<br>sudo lshw -C network<br>と入力し監視対象のnicが*-network:X DISABLEDになっている場合は<br>sudo ifconfig ensXXX(有効化対象) up<br>と打つと有効化できそうです。<br><a href="https://ubuntuforums.org/showthread.php?t=1400504" target="_blank" rel="noopener">https://ubuntuforums.org/showthread.php?t=1400504</a><br>・Javaのインストール</p>
 <p>・Elasticsearchのインストール</p>
-<p>wget -qO - <a href="https://artifacts.elastic.co/GPG-KEY-elasticsearch" target="_blank" rel="noopener">https://artifacts.elastic.co/GPG-KEY-elasticsearch</a> | apt-key add -</p>
+<p>‘’’<br>wget -qO - <a href="https://artifacts.elastic.co/GPG-KEY-elasticsearch" target="_blank" rel="noopener">https://artifacts.elastic.co/GPG-KEY-elasticsearch</a> | apt-key add -<br>‘’’</p>
 <p>echo “deb <a href="https://artifacts.elastic.co/packages/7.x/apt" target="_blank" rel="noopener">https://artifacts.elastic.co/packages/7.x/apt</a> stable main” | tee -a /etc/apt/sources.list.d/elastic-7.x.list</p>
 <p>apt update</p>
 <p>apt install elasticsearch</p>
