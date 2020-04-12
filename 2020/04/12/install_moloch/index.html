@@ -17,7 +17,8 @@
 </ul>
 <h3 id="導入方法"><a href="#導入方法" class="headerlink" title="導入方法"></a>導入方法</h3><p>前提要件として既にUbuntu上で監視対象となるNIC(この場合ens160)が有効になっている必要があります。<br>sudo lshw -C network<br>と入力し監視対象のnicが*-network:X DISABLEDになっている場合は<br>sudo ifconfig ensXXX(有効化対象) up<br>と打つと有効化できそうです。<br><a href="https://ubuntuforums.org/showthread.php?t=1400504" target="_blank" rel="noopener">https://ubuntuforums.org/showthread.php?t=1400504</a><br>・Javaのインストール</p>
 <p>・Elasticsearchのインストール</p>
-<p>‘’’<br>wget -qO - <a href="https://artifacts.elastic.co/GPG-KEY-elasticsearch" target="_blank" rel="noopener">https://artifacts.elastic.co/GPG-KEY-elasticsearch</a> | apt-key add -<br>‘’’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO - https:&#x2F;&#x2F;artifacts.elastic.co&#x2F;GPG-KEY-elasticsearch | apt-key add -</span><br></pre></td></tr></table></figure>
+
 <p>echo “deb <a href="https://artifacts.elastic.co/packages/7.x/apt" target="_blank" rel="noopener">https://artifacts.elastic.co/packages/7.x/apt</a> stable main” | tee -a /etc/apt/sources.list.d/elastic-7.x.list</p>
 <p>apt update</p>
 <p>apt install elasticsearch</p>
