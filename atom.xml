@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yuzud.net/"/>
-  <updated>2020-04-12T12:01:45.190Z</updated>
+  <updated>2020-04-12T13:41:41.837Z</updated>
   <id>https://yuzud.net/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>install_moloch</title>
+    <link href="https://yuzud.net/2020/04/12/install-moloch/"/>
+    <id>https://yuzud.net/2020/04/12/install-moloch/</id>
+    <published>2020-04-12T13:13:23.000Z</published>
+    <updated>2020-04-12T13:41:41.837Z</updated>
+    
+    <content type="html"><![CDATA[<p>#ElasticserchとMolochを使ってパケット分析をする話</p><p>##今回はインストール</p><p>###やりたいこと<br>自室のネットワーク機器が外界とどんな通信をしているかグラフィカルに可視化したい。</p><p>###検証環境<br>VMware ESXi 6.5に仮想マシンを立て、Ubuntu Server 18.04.4 LTSを展開。<br>仮想マシンへは1vCPU/3GBRAMと次のネットワークアダプタを割り当てることに。</p><ul><li>ネットワーク(ens192)</li><li>ミラーリング(ens160)</li></ul><p>今回は[ネットワーク(ens192)]を経由しSSHで接続して作業を行う。</p><p><em>tip: [ミラーリング(ens160)]はWAN主幹のミラーリングをしているためNIC自体にIPアドレスは振られていない。</em></p><p>###動作に必要な物</p><ul><li><p>Java<br>  次項のElasticsearchに必須らしい</p></li><li><p>Elasticsearch 7.6.2<br>  今回はNICの通信をコイツが収集しデータベース化してくれる<br><br>  <em><a href="https://qiita.com/halhosono/items/6aa0bdf9a4ad34434061" target="_blank" rel="noopener">halhosonoさんのQiita参考サイト</a></em></p></li><li><p>Moloch 2.2.3<br>  前項のElsticsearchが収集したデータを分析や可視化する為のツール<br><br>  <em><a href="https://molo.ch/#download" target="_blank" rel="noopener">Moloch Download</a></em></p></li></ul><p>###導入方法<br>(前提要件)<br>既にUbuntu上で監視対象となるNIC(この場合ens160)が有効になっている必要があります。<br>sudo lshw -C network<br>と入力し監視対象のnicが*-network:X DISABLEDになっている場合は<br>sudo ifconfig ensXXX(有効化対象) up<br>と打つと有効化できそうです。<br><a href="https://ubuntuforums.org/showthread.php?t=1400504" target="_blank" rel="noopener">https://ubuntuforums.org/showthread.php?t=1400504</a><br>・Javaのインストール</p><p>・Elasticsearchのインストール</p><p>wget -qO - <a href="https://artifacts.elastic.co/GPG-KEY-elasticsearch" target="_blank" rel="noopener">https://artifacts.elastic.co/GPG-KEY-elasticsearch</a> | apt-key add -</p><p>echo “deb <a href="https://artifacts.elastic.co/packages/7.x/apt" target="_blank" rel="noopener">https://artifacts.elastic.co/packages/7.x/apt</a> stable main” | tee -a /etc/apt/sources.list.d/elastic-7.x.list</p><p>apt update</p><p>apt install elasticsearch</p><p>systemctl start elasticsearch</p><p>curl localhost:9200</p><p>結果</p><p>{<br> “name” : “ando”,<br> “cluster_name” : “elasticsearch”,<br> “cluster_uuid” : “-G83LfaOSM6OZTWIA6mcQg”,<br> “version” : {<br>   “number” : “7.6.2”,<br>   “build_flavor” : “default”,<br>   “build_type” : “deb”,<br>   “build_hash” : “ef48eb35cf30adf4db14086e8aabd07ef6fb113f”,<br>   “build_date” : “2020-03-26T06:34:37.794943Z”,<br>   “build_snapshot” : false,<br>   “lucene_version” : “8.4.0”,<br>   “minimum_wire_compatibility_version” : “6.8.0”,<br>   “minimum_index_compatibility_version” : “6.0.0-beta1”<br> },<br> “tagline” : “You Know, for Search”<br>}</p><p>これでok</p><p>・Molochのインストール</p><p>注意点<br>参考にしたサイトの通りに行うとMolochのバージョンが古く、GEOファイル(IPアドレスがどの国の物なのか教えてくれるサービスのデータ)のダウンロード時にリンク切れを起こして正しく起動しないようです。<br>いくつか検証した結果、やはり公式サイトから正しいファイルを持ってきて展開する方が上手く行きそうです。</p><p>サイトにいく</p><p><a href="https://molo.ch/#download" target="_blank" rel="noopener">https://molo.ch/#download</a><br>導入するOSのバージョンに対応するMolochのリンクをコピーしておく。</p><p>Ubuntu上のターミナルで</p><p>wget <a href="https://files.molo.ch/builds/ubuntu-18.04/moloch_2.2.3-1_amd64.deb" target="_blank" rel="noopener">https://files.molo.ch/builds/ubuntu-18.04/moloch_2.2.3-1_amd64.deb</a><br>を入力し導入マシンへ取り込んでおく。</p><p>引き続きダウンロードしたディレクトリで作業する。</p><p>sudo apt install ./moloch_2.2.3-1_amd64.deb</p><p>ダウンロードしたdebファイルはaptコマンドで導入する。<br>この時ファイル名がパッケージ名と間違われるのでパスの前に./をつけることを忘れずに。</p><p>sudo /data/moloch/bin/Configure<br>あ</p><p>・仕上げ</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;#ElasticserchとMolochを使ってパケット分析をする話&lt;/p&gt;
+&lt;p&gt;##今回はインストール&lt;/p&gt;
+&lt;p&gt;###やりたいこと&lt;br&gt;自室のネットワーク機器が外界とどんな通信をしているかグラフィカルに可視化したい。&lt;/p&gt;
+&lt;p&gt;###検証環境&lt;br&gt;VMwa
+      
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
