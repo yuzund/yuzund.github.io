@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yuzud.net/"/>
-  <updated>2020-04-13T02:45:57.399Z</updated>
+  <updated>2020-04-13T05:46:07.899Z</updated>
   <id>https://yuzud.net/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>replace_nas</title>
+    <link href="https://yuzud.net/2020/04/13/replace-nas/"/>
+    <id>https://yuzud.net/2020/04/13/replace-nas/</id>
+    <published>2020-04-13T05:46:07.000Z</published>
+    <updated>2020-04-13T05:46:07.899Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Ubuntuにパケット分析ツールMolochを導入した話</title>
