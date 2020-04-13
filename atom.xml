@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://yuzud.net/"/>
-  <updated>2020-04-13T05:46:07.899Z</updated>
+  <updated>2020-04-13T07:56:45.715Z</updated>
   <id>https://yuzud.net/</id>
   
   <author>
@@ -17,13 +17,20 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>replace_nas</title>
+    <title>3年半使ったNASを入れ替えたよ</title>
     <link href="https://yuzud.net/2020/04/13/replace-nas/"/>
     <id>https://yuzud.net/2020/04/13/replace-nas/</id>
     <published>2020-04-13T05:46:07.000Z</published>
-    <updated>2020-04-13T05:46:07.899Z</updated>
+    <updated>2020-04-13T07:56:45.715Z</updated>
+    
+    <content type="html"><![CDATA[<h4 id="新しいNASを買ったよ"><a href="#新しいNASを買ったよ" class="headerlink" title="新しいNASを買ったよ"></a>新しいNASを買ったよ</h4><p>我が家でデータ保存用に使用していたNASが容量不足によりリプレイスすることにしました。<br>今まで使っていたNASの構成は次の通りです。</p><ul><li>Synology DS216j</li><li>SEAGATE IRONWOLF NAS 3TB 1本</li><li>Western Digital Green 1TB 1本</li></ul><p>総領域は4TBになります。<br>RAIDは構成せずに3TBのHDDをデータ保存用に、1TBのHDDをネットワークカメラの録画用として使用しています。</p><p>今回導入したNASは次の構成です。</p><ul><li><a href="https://www.netgear.jp/products/details/RN51600.html" target="_blank" rel="noopener">NETGEAR ReadyNAS 516</a></li><li><a href="https://www.amazon.co.jp/dp/B008P56QEQ/" target="_blank" rel="noopener">Western Digital Red 3TB</a> 6本</li></ul><p>X-RAID(5)で構成されているので18TBのうち有効領域はおよそ13TBになります。</p>]]></content>
     
     <summary type="html">
+    
+      
+      
+        &lt;h4 id=&quot;新しいNASを買ったよ&quot;&gt;&lt;a href=&quot;#新しいNASを買ったよ&quot; class=&quot;headerlink&quot; title=&quot;新しいNASを買ったよ&quot;&gt;&lt;/a&gt;新しいNASを買ったよ&lt;/h4&gt;&lt;p&gt;我が家でデータ保存用に使用していたNASが容量不足によりリプレイスす
+      
     
     </summary>
     
